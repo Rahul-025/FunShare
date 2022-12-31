@@ -8,10 +8,13 @@
 
 html {
   font-size: 62.5%;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
 }
 
 body {
+  width: 100vw;
   height: 100vh;
   background: linear-gradient(to right bottom, #cec7f9, #d38a8a);
   font-family: "Roboto Mono", monospace;
@@ -32,7 +35,7 @@ body {
 }
 
 .logo {
-  margin: 3rem 10rem;
+  margin: 4rem 10rem;
   width: 22rem;
   cursor: pointer;
   user-select: none;
@@ -65,28 +68,312 @@ button {
 
   flex-direction: column;
   transition: all 0.2s ease;
+  gap: 5rem;
   position: relative;
 }
 
 .dropbox-upper {
   flex-direction: column;
-  gap: 3.2rem;
 }
 
-.dropbox span,
-footer span {
+.dropbox p {
+  font-size: 1.6rem;
+}
+
+.dropbox span {
   color: var(--text-secondary);
   font-weight: 600;
+  cursor: pointer;
+  user-select: none;
 }
+
+.file-input {
+  display: none;
+}
+
+/* ----------------------------------- DropBox ----------------------------------------- */
+
+/* ----------------------------------- Progress Container ----------------------------------------- */
+
+.progress-container {
+  width: 85%;
+  height: 5rem;
+  position: absolute;
+  bottom: 4rem;
+  border-radius: 10px;
+  transition: all 0.25s linear;
+  display: none;
+}
+
+.progress-percent-container {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  transition: all 0.25s linear;
+  z-index: 2;
+}
+
+.progress-percent {
+  font-size: 1.6rem;
+  color: var(--light-pink) !important;
+  margin-bottom: 1.6rem;
+}
+
+.progress-percent-container img {
+  transition: all 0.25s linear;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 1;
+  background: var(--text-secondary);
+  opacity: 0.6;
+  transition: width 0.25s linear;
+}
+
+/* ----------------------------------- Progress Container ----------------------------------------- */
+
+/* ----------------------------------- Sharing Container ----------------------------------------- */
+
+.sharing-container {
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  display: none;
+}
+
+.sharing-container__upper {
+  flex-direction: column;
+  gap: 3rem;
+}
+.link-icon {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.sharing_container__upper-text {
+  margin: 0 !important;
+  font-size: 1.8rem !important;
+  align-self: center;
+}
+
+.sharing_container__upper-email-text {
+  margin-top: 2rem !important;
+  font-size: 1.6rem !important;
+}
+
+.sharing_container__upper-input-container {
+  gap: 1rem;
+}
+
+.sharing_container__upper-input {
+  width: 40rem;
+  height: 40px;
+  border: 2px dashed var(--text-secondary);
+  outline: none;
+  border-radius: 10px;
+  background: rgb(217, 218, 234);
+  color: rgb(16, 16, 107);
+
+  font: inherit;
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+
+.copy-icon {
+  width: 2.4rem;
+  cursor: pointer;
+}
+
+.email-btn {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.mail-icon {
+  width: 10rem;
+}
+
+.sharing-container__lower {
+  width: 80%;
+  flex-direction: column;
+  display: none;
+  opacity: 0;
+}
+
+.sharing-container__lower-text {
+  margin: 1px !important;
+  font-size: 1.4rem !important;
+}
+
+.email-form {
+  width: 100%;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.email-form__input-container {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.email-form label {
+  font-size: 1.6rem;
+}
+
+#email-from,
+#email-to {
+  width: 250px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  border-bottom: 2px solid var(--text-secondary);
+  background-color: transparent;
+  transition: all 0.1s ease-in-out;
+
+  font: inherit;
+  font-size: 1.6rem;
+  padding: 1rem;
+  color: rgb(103, 103, 103);
+}
+
+#email-from:focus,
+#email-to:focus {
+  outline: 2px solid var(--text-secondary);
+}
+
+.send-email-btn,
+.back-btn {
+  margin-top: 1rem;
+  opacity: 0;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background: linear-gradient(to right bottom, var(--text-secondary), #d38a8a);
+  color: white;
+
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.send-email-btn:hover,
+.back-btn:hover {
+  transform: translateY(-2px);
+}
+
+.send-email-btn:active,
+.back-btn:active {
+  transform: translateY(2px);
+}
+
+/* ----------------------------------- Sharing Container ----------------------------------------- */
+
+/* ----------------------------------- Upload Icons ------------------------------------ */
+
+.upload-icons {
+  width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  margin-bottom: 6rem;
+}
+
+.upload-icons img {
+  width: 14rem;
+  position: absolute;
+  transform-origin: bottom;
+  transition: transform 0.25s ease-in-out;
+}
+
+.upload-icon-1 {
+  z-index: 2;
+  transition: transform 0.25s ease-in-out;
+}
+
+.upload-icon-2,
+.upload-icon-2,
+.upload-icon-3,
+.upload-icon-4,
+.upload-icon-5 {
+  filter: grayscale(0.5);
+}
+
+/* Center Icon */
+.dragged .upload-icon-1 {
+  transform: translateY(-2rem);
+  animation: updown 0.9s infinite alternate;
+}
+
+.dragged .upload-icon-2 {
+  transform: translate(-12rem, -4rem) rotate(-10deg) scale(0.3);
+}
+
+.dragged .upload-icon-3 {
+  transform: translate(12rem, -3rem) rotate(10deg) scale(0.3);
+}
+
+.dragged .upload-icon-4 {
+  transform: translate(-10rem, -11rem) rotate(10deg) scale(0.3);
+}
+
+.dragged .upload-icon-5 {
+  transform: translate(10rem, -10rem) rotate(-10deg) scale(0.3);
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ----------------------------------- Upload Icons ------------------------------------ */
+
+/* ----------------------------------- Caption Box ------------------------------------ */
+.caption-box {
+  margin-bottom: 6rem;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  user-select: none;
+}
+
+.caption-box__text-1 {
+  font-size: 4.8rem;
+}
+
+.caption-box__text-2 {
+  font-size: 5.4rem;
+}
+
+.caption-box__text-3 {
+  font-size: 6.4rem;
+  color: #5737c8;
+}
+
+/* ----------------------------------- Caption Box ------------------------------------ */
+
+/* ----------------------------------- Download Page ------------------------------------ */
 
 .download-icon {
   width: 12rem;
   user-select: none;
+  margin-bottom: 1.8rem;
 }
 
 .download_meta {
+  width: 95%;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.4rem;
   text-align: center;
 }
 
@@ -120,34 +407,9 @@ a {
   transform: translateY(2px);
 }
 
-/* ----------------------------------- DropBox ----------------------------------------- */
+/* ----------------------------------- Download Page ------------------------------------ */
 
-/* ----------------------------------- Caption Box ------------------------------------ */
-.caption-box {
-  margin-bottom: 6rem;
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-  user-select: none;
-}
-
-.caption-box__text-1 {
-  font-size: 4.8rem;
-}
-
-.caption-box__text-2 {
-  font-size: 5.4rem;
-}
-
-.caption-box__text-3 {
-  font-size: 6.4rem;
-  color: #5737c8;
-}
-
-/* ----------------------------------- Caption Box ------------------------------------ */
-
-/* Triangles */
+/* -------------------------------------Footer ---------------------------------------- */
 
 .line-1 {
   position: absolute;
@@ -223,6 +485,24 @@ a {
   cursor: pointer;
 }
 
+.toast {
+  display: none;
+  text-align: center;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  color: white;
+  font-size: 1.4rem;
+  padding: 2rem;
+
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* ---------------------------------------- MEDIA QUERIES -----------------------------------------------------*/
 
 @media screen and (max-width: 1360px) {
@@ -231,7 +511,7 @@ a {
   }
 
   .dropbox {
-    width: 56rem;
+    width: 46rem;
   }
 
   .caption-box__text-1 {
@@ -246,11 +526,21 @@ a {
     font-size: 5.4rem;
     color: #5737c8;
   }
+
+  #email-from,
+  #email-to {
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 1160px) {
   .container {
     gap: 10rem;
+  }
+
+  #email-from,
+  #email-to {
+    width: 250px;
   }
 }
 
@@ -287,6 +577,19 @@ a {
     width: 46rem;
     height: 43rem;
   }
+
+  .sharing_container__upper-input {
+    width: 250px;
+  }
+
+  .mail-icon {
+    width: 8rem;
+  }
+
+  #email-from,
+  #email-to {
+    width: 180px;
+  }
 }
 
 @media screen and (max-width: 530px) {
@@ -297,6 +600,15 @@ a {
 
   .container {
     top: 15%;
+  }
+
+  .email-form__input-container label {
+    font-size: 1.3rem;
+  }
+
+  #email-from,
+  #email-to {
+    width: 130px;
   }
 
   .download-icon {

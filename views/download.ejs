@@ -1,64 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <title>FunShare - Share files easily</title>
-  </head>
-  <body>
+<%- include('includes/header.ejs') %>
+<body>
+  <a href="/">
     <img class="logo" src="/img/logo.png" alt="funshare logo" />
-    <div class="container">
-      <!-- DropBox Start-->
-      <div>
-        <div class="dropbox flex">
-          <div class="dropbox-upper flex">
-            <img
-              class="download-icon"
-              src="/img/download-icon.png"
-              alt="download-icon"
-            />
+  </a>
+  <div class="container">
+    <!-- DropBox Start-->
+    <div>
+      <div class="dropbox flex">
+        <div class="dropbox-upper flex">
+          <img
+            class="download-icon"
+            src="/img/download-icon.png"
+            alt="download-icon"
+          />
 
-            <div class="download_meta flex">
-              <% if(locals.error) { %>
-              <h4><%= locals.error %></h4>
-              <% } else { %>
-              <h4>Your file is ready!</h4>
-              <p><span>Filename: </span><%= fileName %></p>
-              <p><span>File Size:</span> <%= size %></p>
-              <a href="<%= downloadLink %>" class="download-btn flex"
-                >Download</a
-              >
-            </div>
-            <% } %>
+          <div class="download_meta flex">
+            <% if(locals.error) { %>
+            <h4><%= locals.error %></h4>
+            <% } else { %>
+            <h4>Your file is ready!</h4>
+            <p><span>Filename: </span><%= fileName %></p>
+            <p><span>File Size:</span> <%= size %></p>
+            <a href="<%= downloadLink %>" class="download-btn flex">Download</a>
           </div>
+          <% } %>
         </div>
       </div>
-      <!-- DropBox End -->
-      <div class="caption-box">
-        <h2 class="caption-box__text-1">Download</h2>
-        <h2 class="caption-box__text-2">your</h2>
-        <h2 class="caption-box__text-3">file.</h2>
-      </div>
     </div>
-    <div class="line-1"></div>
-    <div class="line-2"></div>
-    <div class="triangle-1"></div>
-    <div class="triangle-2"></div>
-    <script src="script.js"></script>
-  </body>
-  <footer>
-    <div class="attribute flex">
-      <p>made by <span>rahul</span> |</p>
-      <div class="flex">
-        <a href="https://github.com/Rahul-025" target="_blank">
-          <img src="/img/github-icon.png" />
-        </a>
-        <a href="https://www.linkedin.com/in/rahulmahato/" target="_blank">
-          <img src="/img/linkedin-icon.png" />
-        </a>
-      </div>
+    <!-- DropBox End -->
+    <div class="caption-box">
+      <h2 class="caption-box__text-1">Download</h2>
+      <h2 class="caption-box__text-2">your</h2>
+      <h2 class="caption-box__text-3">file.</h2>
     </div>
-  </footer>
-</html>
+  </div>
+  <div class="line-1"></div>
+  <div class="line-2"></div>
+  <div class="triangle-1"></div>
+  <div class="triangle-2"></div>
+  <script src="/js/script.js"></script>
+</body>
+<%- include('includes/footer.ejs') %>

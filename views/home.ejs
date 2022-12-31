@@ -1,0 +1,124 @@
+<%- include('includes/header.ejs') %>
+<body>
+  <a href="/">
+    <img class="logo" src="/img/logo.png" alt="funshare logo" />
+  </a>
+  <section class="container">
+    <!-- DropBox Start-->
+    <div>
+      <div class="dropbox flex">
+        <div class="dropbox-upper flex">
+          <div class="upload-icons">
+            <img
+              class="upload-icon-1"
+              src="/img/upload.png"
+              alt="upload icon"
+              draggable="false"
+            />
+            <img
+              class="upload-icon-2"
+              src="/img/upload.png"
+              alt="upload icon"
+              draggable="false"
+            />
+            <img
+              class="upload-icon-3"
+              src="/img/upload.png"
+              alt="upload icon"
+              draggable="false"
+            />
+            <img
+              class="upload-icon-4"
+              src="/img/upload.png"
+              alt="upload icon"
+              draggable="false"
+            />
+            <img
+              class="upload-icon-5"
+              src="/img/upload.png"
+              alt="upload icon"
+              draggable="false"
+            />
+          </div>
+          <input class="file-input" type="file" />
+          <p>
+            Drag file to upload or
+            <span class="browse-files-btn">browse</span>
+          </p>
+        </div>
+
+        <!-- Progress Container Starts -->
+        <div class="progress-container">
+          <div class="progress-percent-container">
+            <span class="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar"></div>
+        </div>
+        <!-- Progress Container Ends -->
+
+        <!-- Sharing Container Starts -->
+        <div class="sharing-container flex">
+          <div class="sharing-container__upper flex">
+            <div class="flex">
+              <img src="/img/link-icon.png" class="link-icon" />
+              <p class="sharing_container__upper-text">
+                Link expires in <span>8 hrs</span>
+              </p>
+            </div>
+
+            <div class="sharing_container__upper-input-container flex">
+              <input
+                type="text"
+                class="sharing_container__upper-input"
+                readonly
+              />
+              <img class="copy-icon" src="/img/copy-icon.png" />
+            </div>
+            <p class="sharing_container__upper-email-text">
+              Or, share link via <span class="email-btn">email</span>
+            </p>
+          </div>
+
+          <!-- Email Form -->
+          <div class="sharing-container__lower flex">
+            <form class="email-form flex">
+              <img src="/img/mail-icon.png" class="mail-icon" />
+
+              <!-- Sender's Email -->
+              <div class="email-form__input-container flex">
+                <label for="email-from">Sender's Email</label>
+                <input id="email-from" />
+              </div>
+
+              <!-- Reciever's Email -->
+              <div class="email-form__input-container flex">
+                <label for="email-to">Reciever's Email</label>
+                <input id="email-to" />
+              </div>
+              <div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="submit" class="send-email-btn">Send Email</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Sharing Container Ends -->
+      </div>
+    </div>
+    <!-- DropBox End -->
+    <div class="caption-box">
+      <h2 class="caption-box__text-1">Share</h2>
+      <h2 class="caption-box__text-2">files</h2>
+      <h2 class="caption-box__text-3">effortlessly.</h2>
+    </div>
+  </section>
+  <div class="line-1"></div>
+  <div class="line-2"></div>
+  <div class="triangle-1"></div>
+  <div class="triangle-2"></div>
+  <div class="toast flex">Something went wrong!</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/animation.js"></script>
+</body>
+<%- include('includes/footer.ejs') %>

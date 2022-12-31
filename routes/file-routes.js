@@ -4,6 +4,7 @@ const validator = require("email-validator");
 const FileModel = require("../models/file-model");
 const multerUpload = require("../utils/multer");
 const sendEmail = require("../utils/nodemailer");
+const emailTemplate = require("../utils/email-template");
 
 /*
  *  @ method  POST
@@ -33,46 +34,11 @@ router.post("/", (req, res) => {
       });
       // Send Response
       return res.status(201).send({
-        downloadPage: `${process.env.API_URL}/api/files/${file._id}`,
+        downloadPage: `${process.env.API_URL}/files/${file._id}`,
       });
-      // return res
-      //   .status(200)
-      //   .json({
-      //     downloadPage: `${process.env.API_URL}/api/files/${Date.now()}`,
-      //   });
     });
   } catch (error) {
     return res.status(500).send({
-      message: "Something went wrong!",
-    });
-  }
-});
-
-/*
- *  @ method  GET
- *  @ route   http://domain/api/files/fileId
- */
-
-router.get("/:fileId", async (req, res) => {
-  try {
-    const file = await FileModel.findById(req.params.fileId);
-    if (!file) {
-      return res.status(400).render("download", {
-        success: false,
-        message: "File link has expired! Please try again.",
-      });
-    }
-
-    return res.status(200).render("download", {
-      success: true,
-      fileId: file._id,
-      fileName: file.name,
-      size: `${file.size / 1000} Kb `,
-      downloadLink: `${process.env.API_URL}/api/files/download/${file._id}`,
-    });
-  } catch (error) {
-    return res.status(500).render("download", {
-      success: false,
       message: "Something went wrong!",
     });
   }
@@ -109,7 +75,6 @@ router.get("/download/:fileId", async (req, res) => {
  */
 
 router.post("/sendemail", async (req, res) => {
-  console.log(req.body);
   try {
     const { fileId, emailFrom, emailTo } = req.body;
 
@@ -151,8 +116,13 @@ router.post("/sendemail", async (req, res) => {
       from: emailFrom,
       to: emailTo,
       subject: "FunShare File Sharing",
-      test: "Test...",
-      html: "<h1>This is a test email</h1>",
+      test: `${emailFrom} shared a file with you.`,
+      html: emailTemplate({
+        emailFrom,
+        downloadLink: `${process.env.API_URL}/files/${file._id}?source=email`,
+        size: parseInt(file.size / 1000) + " KB",
+        expires: "24 hours",
+      }),
     });
 
     return res.status(200).json({
