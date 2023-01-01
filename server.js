@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors");
 
 // User Imports
 const connectDB = require("./utils/database");
@@ -11,6 +12,11 @@ const fileRoutes = require("./routes/file-routes");
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: process.env.ALLOWED_CLIENT,
+  })
+);
 
 // Set up EJS
 app.set("views", path.join(__dirname, "/views"));
