@@ -18,7 +18,6 @@ app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
 // Global Middlewares
-app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
@@ -27,9 +26,9 @@ app.use("/api/files", fileRoutes);
 app.use("/", viewRoutes);
 
 // Database
+const PORT = process.env.PORT || 3001;
 connectDB();
 
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server listening at ${PORT}`);
 });

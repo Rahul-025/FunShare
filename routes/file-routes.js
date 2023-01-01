@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 const router = express.Router();
 const validator = require("email-validator");
 const FileModel = require("../models/file-model");
@@ -135,6 +136,27 @@ router.post("/sendemail", async (req, res) => {
       message: "Something went wrong.",
     });
   }
+});
+
+router.get("/delete", async (req, res) => {
+  const pastDate = new Date(Date.now() - 8 * 60 * 60);
+  const files = await FileModel.find({ createdAt: { $lte: pastDate } });
+  const len = files.length;
+  if (!len) {
+    return;
+  }
+  console.log(`Removing ${len} files...`);
+  for (const file of files) {
+    try {
+      fs.unlinkSync(file.path);
+      await file.remove();
+      console.log(`successfully removed ${file.name}`);
+    } catch (error) {
+      console.log(`Error removing file: ${file.name}`);
+    }
+  }
+  console.log(`successfully removed all files`);
+  return res.status(200).send("successfully removed all files");
 });
 
 module.exports = router;
