@@ -45,8 +45,4 @@ const cronJob = () => {
   console.log(`successfully removed all files`);
 };
 
-const s = async () => {
-  setTimeout(() => console.log("wrra"), 2000);
-};
-
 module.exports = cronJob;

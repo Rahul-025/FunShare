@@ -26,7 +26,7 @@ const emailSubmitBtn = document.querySelector(".send-email-btn");
 const toastContainer = document.querySelector(".toast");
 
 // API Links
-const API_URL = "https://funshare.cyclic.app";
+const API_URL = "https://funshare.onrender.com";
 const UPLOAD_LINK = `${API_URL}/api/files`;
 const EMAIL_LINK = `${API_URL}/api/files/sendemail`;
 
