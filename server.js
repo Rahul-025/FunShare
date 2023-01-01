@@ -31,9 +31,4 @@ app.use("/api/files", fileRoutes);
 app.use("/", viewRoutes);
 
 // Database
-const PORT = process.env.PORT || 3001;
-connectDB();
-
-app.listen(PORT, () => {
-  console.log(`Server listening at ${PORT}`);
-});
+connectDB(app);

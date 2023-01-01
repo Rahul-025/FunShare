@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const connectDB = () => {
+const PORT = process.env.PORT || 3001;
+
+const connectDB = (app) => {
   mongoose
     .connect(process.env.DB_URL, {
       useNewUrlParser: true,
@@ -8,6 +10,9 @@ const connectDB = () => {
     })
     .then(() => {
       console.log("Database connected.");
+      app.listen(PORT, () => {
+        console.log(`Server listening at ${PORT}`);
+      });
     })
     .catch((err) => console.log("Database connection error.", err));
 };
